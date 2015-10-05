@@ -8,6 +8,12 @@ public class Cam : MonoBehaviour {
 
     private Transform player;
 
+	void Start(){
+
+		transform.eulerAngles = new Vector3(90,0,0);
+
+	}
+
     void Update() {
 
 		player = GameObject.FindObjectOfType<Movement>().transform;

@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour {
 
 		Vector3 movement = new Vector3(h,0,v) * Time.smoothDeltaTime * speed;
 
-        transform.Translate(movement);
+        transform.Translate(movement,Space.World);
 
 	}
 

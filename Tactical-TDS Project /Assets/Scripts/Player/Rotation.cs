@@ -10,8 +10,8 @@ public class Rotation : MonoBehaviour {
 
         if (Physics.Raycast(mouseRay, out hit)) {
 
-            Vector3 lookHere = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-            transform.LookAt(lookHere);
+            Vector3 lookPos = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            transform.LookAt(lookPos);
         }
 
     }

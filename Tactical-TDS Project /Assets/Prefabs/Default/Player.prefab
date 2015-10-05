@@ -246,6 +246,10 @@ MonoBehaviour:
   - {fileID: 11407376}
   - {fileID: 11453528}
   - {fileID: 11457250}
+  necessaryGameobjects:
+  - {fileID: 109528, guid: ea45175dfea2b0245a9d7e689c9d32ed, type: 2}
+  - {fileID: 100214, guid: ec3550763bd7d4dd686cd3301bfed785, type: 2}
+  - {fileID: 102224, guid: 8f9a55b192c554b4d8e5fa51f8632fdc, type: 2}
 --- !u!136 &13615010
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -268,6 +272,10 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: inputComponents.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: necessaryGameobjects.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
@@ -370,6 +378,14 @@ Prefab:
       propertyPath: inputComponents.Array.data[4]
       value: 
       objectReference: {fileID: 13615010}
+    - target: {fileID: 0}
+      propertyPath: necessaryGameobjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 100214, guid: ec3550763bd7d4dd686cd3301bfed785, type: 2}
+    - target: {fileID: 0}
+      propertyPath: necessaryGameobjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 102224, guid: 8f9a55b192c554b4d8e5fa51f8632fdc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 187722}
