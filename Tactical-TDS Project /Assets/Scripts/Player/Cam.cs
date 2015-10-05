@@ -8,11 +8,11 @@ public class Cam : MonoBehaviour {
 
     private Transform player;
 
-    void Awake() {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-
     void Update() {
+
+		player = GameObject.FindGameObjectWithTag("Local").transform;
+
         transform.position = Vector3.Lerp(transform.position, player.position + (Vector3.up * height), Time.smoothDeltaTime * dampening);
+
     }
 }

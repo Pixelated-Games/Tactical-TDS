@@ -4,9 +4,17 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 public class Movement : MonoBehaviour {
 
-	public int speed;
+	public float speed;
 
 	void Update () {
-        transform.Translate(Input.GetAxis("Horizontal") * Time.smoothDeltaTime * speed, 0, Input.GetAxis("Vertical") * Time.smoothDeltaTime * speed);
+
+		float h = Input.GetAxis("Horizontal");
+		float v = Input.GetAxis("Vertical");
+
+		Vector3 movement = new Vector3(h,0,v) * Time.smoothDeltaTime * speed;
+
+        transform.Translate(movement);
+
 	}
+
 }
