@@ -159,7 +159,7 @@ MonoBehaviour:
     i14: 186
     i15: 236
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &11496190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,6 +215,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_ServerOnly
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPlayerAuthority
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

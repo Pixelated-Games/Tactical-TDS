@@ -32,7 +32,6 @@ public class Throw : NetworkBehaviour {
 
 	[Command]
 	void Cmd_ThrowGrenade(){
-			
 
 		GameObject g = Instantiate(grenade, throwPoint.position, transform.rotation) as GameObject;
 			

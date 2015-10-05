@@ -12,15 +12,10 @@ public class Tele : NetworkBehaviour {
 
     void Start() {
 
+		player = GameObject.FindObjectOfType<Movement>().transform;
         GetComponent<Rigidbody>().AddRelativeForce(throwForce, ForceMode.Impulse);
 
     }
-
-	void Update(){
-
-		player = GameObject.FindGameObjectWithTag("Local").transform;
-
-	}
 
     void OnCollisionEnter() {
 
