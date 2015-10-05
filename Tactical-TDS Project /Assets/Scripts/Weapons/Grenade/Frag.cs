@@ -11,7 +11,7 @@ public class Frag : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(groundRay, out hit)) {
             foreach (Collider col in Physics.OverlapSphere(hit.point, radius)) {
-                col.GetComponent<Rigidbody>().AddForceAtPosition(power, )
+                col.GetComponent<Rigidbody>().AddForceAtPosition(power,transform.position);
             }
         }
     }
