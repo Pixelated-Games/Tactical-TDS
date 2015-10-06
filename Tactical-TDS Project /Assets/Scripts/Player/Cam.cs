@@ -8,9 +8,15 @@ public class Cam : MonoBehaviour {
 
     private Transform player;
 
+	void Start(){
+
+		transform.eulerAngles = new Vector3(90,0,0);
+
+	}
+
     void Update() {
 
-		player = GameObject.FindObjectOfType<Movement>().transform;
+		player = GameObject.FindObjectOfType<PlayerInput>().transform;
 
         transform.position = Vector3.Lerp(transform.position, player.position + (Vector3.up * height), Time.smoothDeltaTime * dampening);
 

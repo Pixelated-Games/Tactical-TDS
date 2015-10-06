@@ -12,7 +12,7 @@ public class Tele : NetworkBehaviour {
 
     void Start() {
 
-		player = GameObject.FindObjectOfType<Movement>().transform;
+		player = GameObject.FindObjectOfType<PlayerInput>().transform;
         GetComponent<Rigidbody>().AddRelativeForce(throwForce, ForceMode.Impulse);
 
     }
