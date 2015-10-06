@@ -16,7 +16,7 @@ public class Cam : MonoBehaviour {
 
     void Update() {
 
-		player = GameObject.FindObjectOfType<Movement>().transform;
+		player = GameObject.FindObjectOfType<PlayerInput>().transform;
 
         transform.position = Vector3.Lerp(transform.position, player.position + (Vector3.up * height), Time.smoothDeltaTime * dampening);
 

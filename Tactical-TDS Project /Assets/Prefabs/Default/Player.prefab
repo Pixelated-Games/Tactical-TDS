@@ -12,10 +12,7 @@ GameObject:
   - 136: {fileID: 13615010}
   - 23: {fileID: 2327766}
   - 54: {fileID: 5457760}
-  - 114: {fileID: 11407376}
   - 114: {fileID: 11453528}
-  - 114: {fileID: 11406056}
-  - 114: {fileID: 11457250}
   - 114: {fileID: 11461036}
   - 114: {fileID: 11468568}
   - 114: {fileID: 11467770}
@@ -113,29 +110,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &11406056
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a39cf1ed92a9ee41b10dc5b2bba24c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grenade: {fileID: 185758, guid: 03464bc858349694fa86a72f4f88baec, type: 2}
---- !u!114 &11407376
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0467ef4387c612d40ac61c92bf80b1eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11453528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,17 +122,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
---- !u!114 &11457250
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bcac62f0551f614098d5a1587a40d11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  grenades:
+  - {fileID: 185758, guid: 03464bc858349694fa86a72f4f88baec, type: 2}
+  - {fileID: 193268, guid: b3d0437b571c70f46b86c1d741a393b4, type: 2}
+  currentGrenade: {fileID: 0}
   types: 0
 --- !u!114 &11461036
 MonoBehaviour:
@@ -242,14 +209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a95d02eff0942b893b4d32da0002d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputComponents:
-  - {fileID: 11407376}
-  - {fileID: 11453528}
-  - {fileID: 11457250}
+  inputScript: {fileID: 11453528}
   necessaryGameobjects:
   - {fileID: 109528, guid: ea45175dfea2b0245a9d7e689c9d32ed, type: 2}
   - {fileID: 100214, guid: ec3550763bd7d4dd686cd3301bfed785, type: 2}
   - {fileID: 102224, guid: 8f9a55b192c554b4d8e5fa51f8632fdc, type: 2}
+  startPos: {x: 0, y: 0, z: 0}
 --- !u!136 &13615010
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -271,8 +236,12 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: grenades.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: inputComponents.Array.size
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: necessaryGameobjects.Array.size
@@ -349,7 +318,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: inputComponents.Array.data[0]
       value: 
-      objectReference: {fileID: 11407376}
+      objectReference: {fileID: 11453528}
     - target: {fileID: 0}
       propertyPath: inputComponents.Array.data[1]
       value: 
@@ -357,7 +326,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: inputComponents.Array.data[2]
       value: 
-      objectReference: {fileID: 11457250}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: inputComponents.Array.data[3]
       value: 
@@ -386,6 +355,22 @@ Prefab:
       propertyPath: necessaryGameobjects.Array.data[2]
       value: 
       objectReference: {fileID: 102224, guid: 8f9a55b192c554b4d8e5fa51f8632fdc, type: 2}
+    - target: {fileID: 0}
+      propertyPath: grenade
+      value: 
+      objectReference: {fileID: 185758, guid: 03464bc858349694fa86a72f4f88baec, type: 2}
+    - target: {fileID: 0}
+      propertyPath: grenades.Array.data[0]
+      value: 
+      objectReference: {fileID: 185758, guid: 03464bc858349694fa86a72f4f88baec, type: 2}
+    - target: {fileID: 0}
+      propertyPath: grenades.Array.data[1]
+      value: 
+      objectReference: {fileID: 193268, guid: b3d0437b571c70f46b86c1d741a393b4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: inputScript
+      value: 
+      objectReference: {fileID: 11453528}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 187722}

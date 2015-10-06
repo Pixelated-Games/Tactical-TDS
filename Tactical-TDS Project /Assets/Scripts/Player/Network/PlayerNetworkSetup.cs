@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 public class PlayerNetworkSetup : NetworkBehaviour {
 
 	//All of the players input components
-	public Component[] inputComponents;
+	public PlayerInput inputScript;
 	public GameObject[] necessaryGameobjects;
 	public Vector3 startPos;
 
@@ -16,12 +16,7 @@ public class PlayerNetworkSetup : NetworkBehaviour {
 
 		if(!isLocalPlayer){
 
-			foreach(Component comp in inputComponents){
-
-				Destroy(comp);
-
-			}
-
+			inputScript.enabled = false;
 			gameObject.tag = "Online";
 
 		} else {
@@ -37,9 +32,5 @@ public class PlayerNetworkSetup : NetworkBehaviour {
 		}
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }
