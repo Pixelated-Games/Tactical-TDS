@@ -22,7 +22,7 @@ public class Container : NetworkBehaviour {
 
 		} else {
 
-			Destroy(other);
+			Destroy(other.gameObject);
 
 		}
 

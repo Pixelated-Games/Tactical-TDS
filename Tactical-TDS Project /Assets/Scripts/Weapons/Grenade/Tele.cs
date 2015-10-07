@@ -4,8 +4,7 @@ using UnityEngine.Networking;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Tele : NetworkBehaviour {
-
-    public Vector3 throwForce;
+	
     public float dampening;
 
     private Transform player;
@@ -13,7 +12,6 @@ public class Tele : NetworkBehaviour {
     void Start() {
 
 		player = GameObject.FindObjectOfType<PlayerInput>().transform;
-        GetComponent<Rigidbody>().AddRelativeForce(throwForce, ForceMode.Impulse);
 
     }
 
