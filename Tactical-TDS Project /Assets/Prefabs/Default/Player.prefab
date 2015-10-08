@@ -12,13 +12,13 @@ GameObject:
   - 136: {fileID: 13615010}
   - 23: {fileID: 2327766}
   - 54: {fileID: 5457760}
-  - 143: {fileID: 14333168}
   - 114: {fileID: 11453528}
   - 114: {fileID: 11461036}
   - 114: {fileID: 11468568}
   - 114: {fileID: 11467770}
   - 114: {fileID: 11477516}
   - 114: {fileID: 11421710}
+  - 145: {fileID: 14599516}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grappleObjectPrefab: {fileID: 128966, guid: 57a85fee2bff440c48fbb105c6103f41, type: 2}
+  throwForce: 35
 --- !u!114 &11453528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,23 +246,24 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!143 &14333168
-CharacterController:
+--- !u!145 &14599516
+SpringJoint:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187722}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: .5
-  m_SlopeLimit: 45
-  m_StepOffset: .300000012
-  m_SkinWidth: .0799999982
-  m_MinMoveDistance: .00100000005
-  m_Center: {x: 0, y: 0, z: 0}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 1, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_Spring: 0
+  m_Damper: .200000003
+  m_MinDistance: 0
+  m_MaxDistance: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -429,6 +431,18 @@ Prefab:
       propertyPath: grappleObjectPrefab
       value: 
       objectReference: {fileID: 128966, guid: 57a85fee2bff440c48fbb105c6103f41, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: throwForce
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Spring
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 187722}

@@ -4,6 +4,7 @@ using System.Collections;
 public class GrapplingConcept : MonoBehaviour {
 	
 	public GameObject grappleObjectPrefab;
+	public float throwForce;
 
 	Vector3 mousePos;
 	GameObject grappleObject;
@@ -21,8 +22,6 @@ public class GrapplingConcept : MonoBehaviour {
 			Grapple();
 
 		}
-
-		PullIn();
 
 	}
 
@@ -65,29 +64,17 @@ public class GrapplingConcept : MonoBehaviour {
 
 				}
 
-				Destroy(GetComponent<SpringJoint>());
-
 			}
-			
+
+			GetComponent<SpringJoint>().spring = 0;
+
 			grappleObject = (GameObject)Instantiate(grappleObjectPrefab,GetComponent<PlayerInput>().throwPoint.position,GetComponent<PlayerInput>().throwPoint.rotation);
 
-			gameObject.AddComponent<SpringJoint>().connectedBody = grappleObject.GetComponent<Rigidbody>();
-			grappleObject.GetComponent<Rigidbody>().AddForce((grapplePoint.point - transform.position),ForceMode.Impulse);
+			GetComponent<SpringJoint>().connectedBody = grappleObject.GetComponent<Rigidbody>();
 
-		}
+			Debug.Log(gameObject.GetComponent<SpringJoint>().spring);
 
-	}
-
-	void PullIn(){
-
-		if(Input.GetKey(KeyCode.Alpha4)){
-
-			if(GetComponent<SpringJoint>() != null){
-
-				gameObject.GetComponent<SpringJoint>().spring += Time.deltaTime;
-				Debug.Log(gameObject.GetComponent<SpringJoint>().spring);
-
-			}
+			grappleObject.GetComponent<Rigidbody>().AddForce((grapplePoint.point - transform.position).normalized * throwForce,ForceMode.Impulse);
 
 		}
 

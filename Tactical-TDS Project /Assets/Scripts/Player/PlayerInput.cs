@@ -54,9 +54,9 @@ public class PlayerInput  : NetworkBehaviour {
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis("Vertical");
 		
-		Vector3 movement = new Vector3(h,0,v) * speed;
+		Vector3 movement = new Vector3(h,0,v) * speed * Time.deltaTime;
 		
-		GetComponent<CharacterController>().SimpleMove(movement);
+		transform.Translate(movement,Space.World);
 
 	}
 

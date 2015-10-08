@@ -11,6 +11,7 @@ public class Cam : MonoBehaviour {
 	void Start(){
 
 		transform.eulerAngles = new Vector3(90,0,0);
+		player = GameObject.FindGameObjectWithTag("Local").transform;
 
 	}
 
