@@ -6,15 +6,19 @@ using System.Collections.Generic;
 public enum Types { Teleport, Frag, Flash }
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerInput : NetworkBehaviour {
+public class PlayerInput  : NetworkBehaviour {
 
 	public float speed;
 
 	public List<GameObject> grenades = new List<GameObject>();
 	public GameObject currentGrenade;
 
-	private Transform throwPoint;
+	public Transform throwPoint;
 	public Types types;
+	public float upwardMultiplier;
+
+	int cycleIndex;
+	Vector3 mousePosThrow;
 
 	void Start() {
 		
@@ -50,7 +54,7 @@ public class PlayerInput : NetworkBehaviour {
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis("Vertical");
 		
-		Vector3 movement = new Vector3(h,0,v) * Time.smoothDeltaTime * speed;
+		Vector3 movement = new Vector3(h,0,v) * speed * Time.deltaTime;
 		
 		transform.Translate(movement,Space.World);
 
@@ -71,14 +75,21 @@ public class PlayerInput : NetworkBehaviour {
 
 	void Cycle(){
 
-		if (Input.GetKeyDown(KeyCode.Q)) {
-			if (types == Types.Flash) {
-				types = 0;
-			}
-			else {
-				types += 1;
-			}
-		}
+		if (Input.GetKeyDown(KeyCode.Alpha1)) {
+
+			cycleIndex = 0;
+
+		} else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+			
+			cycleIndex = 1;
+			
+		} else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+			
+			cycleIndex = 2;
+			
+		} 
+
+		currentGrenade = grenades[cycleIndex];
 
 	}
 
@@ -100,9 +111,26 @@ public class PlayerInput : NetworkBehaviour {
 
 	[Command]
 	void Cmd_ThrowGrenade(){
-	
+
+		Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
+		
+		if (Physics.Raycast(mouseRay, out hit)) {
+			
+			mousePosThrow = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+
+		}
+
+		Vector3 forwardForce = transform.forward * Vector3.Distance(transform.position,mousePosThrow) * 10;
+		Debug.Log(Vector3.Distance(transform.position,mousePosThrow));
+
+		Vector3 upwardForce = transform.up * upwardMultiplier;
+
+		Vector3 throwForce = forwardForce + upwardForce;
+
 		GameObject g = Instantiate(currentGrenade, throwPoint.position, transform.rotation) as GameObject;
-	
+		g.GetComponent<Rigidbody>().AddForce(throwForce, ForceMode.Impulse);
+
 		NetworkServer.Spawn(g);
 	
 	}

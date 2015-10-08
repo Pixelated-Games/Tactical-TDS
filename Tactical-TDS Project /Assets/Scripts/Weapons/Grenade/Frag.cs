@@ -4,15 +4,31 @@ using System.Collections;
 public class Frag : MonoBehaviour {
 
     public float radius;
-    public Vector3 power;
+    public float power;
+	Vector3 force;
 
     void OnCollisionEnter() {
-        Ray groundRay = new Ray(transform.position, Vector3.down);
-        RaycastHit hit;
-        if (Physics.Raycast(groundRay, out hit)) {
-            foreach (Collider col in Physics.OverlapSphere(hit.point, radius)) {
-                col.GetComponent<Rigidbody>().AddForceAtPosition(power,transform.position);
-            }
-        }
-    }
+			
+		Explode();
+		Destroy(gameObject);
+			
+	}
+
+	void Explode(){
+
+		Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+		
+		for (int i = 0;i < hitColliders.Length;i++) {
+			
+			if(hitColliders[i].GetComponent<Rigidbody>() != null){
+				
+				force = hitColliders[i].transform.position - transform.position;
+				
+				hitColliders[i].GetComponent<Rigidbody>().AddForce(force * power,ForceMode.Impulse);
+				
+			}
+			
+		}
+
+	}
 }
